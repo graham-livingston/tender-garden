@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.typekit.net/vhy8inj.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script defer="" src="static/script.js"></script>
+    <style>
+        body {
+            background: 
+                radial-gradient(circle at 30% 35%, #f8e890e3, transparent 40%),
+                radial-gradient(circle at 70% 70%, rgba(214, 250, 156, 0.2), transparent 70%),
+                radial-gradient(circle at 70% 70%, rgba(214, 250, 156, 0.2), transparent 70%),
+                radial-gradient(circle at 0% 4%, rgba(250, 203, 211, 0.959), transparent 30%),
+                linear-gradient(135deg, rgba(195, 131, 34, 0.1), rgba(128, 128, 128, 0.2)),
+                linear-gradient(45deg, rgba(40, 180, 99, 0.05), rgba(40, 180, 99, 0.1));
+            background-blend-mode: multiply, screen;
+            background-color: #f1f1f1;
+            height: 100%;
+            margin: 0;
+            width: 100%;
+        }
+
+        h1, h2 {
+            font-family: "neue-haas-grotesk-display", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            color: #333;
+        }
+
+        h1 {
+            font-size: 23rem;
+            color: #acca8f8e;
+            background-blend-mode: color-burn;
+            filter: blur(4px);
+            position: absolute;
+            /* top: 0; */
+            left: 0;
+            right: 0;
+            z-index: -1;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            text-align: left;
+            line-height: 0.8;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        h3, h4 {
+            font-family: "neue-haas-grotesk-text", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            color: #555;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        p {
+            font-family: "source-sans-pro", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            font-style: normal;
+            color: #000;
+        }
+
+        blockquote {
+            font-family: "source-sans-pro", sans-serif;
+            font-weight: 400;
+            font-style: italic;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .caption {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .chapter {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 6rem;
+        }
+
+        .container {
+            /* position: relative; */
+            display: grid;
+            grid-template-columns: repeat(9, 1fr [col-start]);
+            grid-template-rows: repeat(9, 1fr [row-start]);
+            gap: 1rem;
+            width: 100%;
+            height: auto;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .container .item {
+            border-left: 1px solid #000;
+            border-top: 1px dashed #000;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .intro-cell {
+            display: flex;
+            background-color: #fdfafac2;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: auto;
+            /* padding: 10px; */
+        }
+
+        .heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            margin: auto;
+            padding: 10px;
+            align-items: center;
+            align-content: center;
+        }
+
+        .in-text {
+            width: 100%;
+            height: auto;
+            margin: auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="chapter">
+        <h1>TENDERGARDEN.io</h1>
+        <div class="container">
+            <div class="item" style="grid-column: 2 / 4; grid-row: 2 / 4;">
+                <div class="intro-cell">
+                    <h4>Time Running</h4>
+                    <p>19373.02389 <i>timestamp</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 4 / 6; grid-row: 2 / 4;">
+                <div class="intro-cell">
+                    <h4>current electraical usage</h4>
+                    <p>19373.02389 <i>Kwh</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 6 / 8; grid-row: 2 / 4;">
+                <div class="intro-cell">
+                    <h4>total electricity used</h4>
+                    <p>19373.02389 <i>Kwh</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 2 / 4; grid-row: 4 / 6;">
+                <div class="intro-cell">
+                    <h4>Carbon Released</h4>
+                    <p>19373.02389 <i>g</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 4 / 6; grid-row: 4 / 6;">
+                <div class="intro-cell">
+                    <h4>Time the tree has been growing</h4>
+                    <p>19373.02389 <i>Kwh</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 6 / 8; grid-row: 4 / 6;">
+                <div class="intro-cell">
+                    <h4>Mass of the tree</h4>
+                    <p>19373.02389 <i>Kwh</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 2 / 4; grid-row: 6 / 8;">
+                <div class="intro-cell">
+                    <h4>Carbon Sequestered</h4>
+                    <p>19373.02389 <i>Kwh</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 4 / 6; grid-row: 6 / 8;">
+                <div class="intro-cell">
+                    <h4>Total Carbon Offset</h4>
+                    <p>19373.02389 <i>Kwh</i></p>
+                </div>
+            </div>
+            <div class="item" style="grid-column: 6 / 8; grid-row: 6 / 8; background-color: #fcfafa00;">
+                <div class="intro-cell">
+                    <!-- Add more content if needed -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chapter" id="1">
+        <div class="heading">
+            <h2 class="title">The Internet</h2>
+            <p class="subtitle">Total bytes sent and received by this website: 12341342134.234</p>
+            <img class="graphic" src="static/imgs/tcp-reno.png">
+        </div>
+        <div class="main-section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse. Eget mi proin sed libero enim sed faucibus. Blandit aliquam etiam erat velit scelerisque. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet nulla facilisi morbi tempus iaculis urna id. Amet dictum sit amet justo donec enim diam vulputate. Volutpat sed cras ornare arcu dui vivamus. Quis viverra nibh cras pulvinar mattis. Nec ultrices dui sapien eget mi proin sed. Pellentesque sit amet porttitor eget dolor. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat.</p>
+            <img class="in-text" src="static/imgs/rand-network.jpg">
+            <p>Velit ut tortor pretium viverra suspendisse potenti. Ipsum consequat nisl vel pretium lectus quam id leo. Fames ac turpis egestas integer eget aliquet nibh praesent tristique. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Tellus elementum sagittis vitae et leo duis. Placerat orci nulla pellentesque dignissim. Elit ut aliquam purus sit amet luctus. Sapien et ligula ullamcorper malesuada. Eu nisl nunc mi ipsum faucibus vitae aliquet. Dui ut ornare lectus sit amet est placerat in. Magna eget est lorem ipsum dolor. A diam sollicitudin tempor id eu nisl nunc mi ipsum. Sed vulputate odio ut enim blandit volutpat. Et odio pellentesque diam volutpat.</p>
+            <p>Nec ultrices dui sapien eget mi proin sed libero. Blandit massa enim nec dui nunc. Curabitur gravida arcu ac tortor dignissim convallis aenean. Leo vel orci porta non pulvinar neque laoreet. Nunc sed blandit libero volutpat sed cras ornare arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Est ultricies integer quis auctor. Convallis tellus id interdum velit laoreet. Fusce id velit ut tortor pretium viverra suspendisse. Leo integer malesuada nunc vel risus commodo. Phasellus vestibulum lorem sed risus ultricies. Blandit aliquam etiam erat velit scelerisque in dictum non consectetur. Vulputate dignissim suspendisse in est ante in nibh mauris. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Imperdiet massa tincidunt nunc pulvinar sapien. Nec ultrices dui sapien eget mi proin sed. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi.</p>    
+        </div>
+    </div>
+
+
+
+    <div class="chapter" id="2">
+        <div class="heading">
+            <h2 class="title">The Cost of Computation</h2>
+            <p class="subtitle">Est for the current electricity used for bitcoin or machine learning: 12341342134.234</p>
+            <img class="graphic" src="static/imgs/tcp-reno.png">
+        </div>
+        <div class="main-section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse. Eget mi proin sed libero enim sed faucibus. Blandit aliquam etiam erat velit scelerisque. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet nulla facilisi morbi tempus iaculis urna id. Amet dictum sit amet justo donec enim diam vulputate. Volutpat sed cras ornare arcu dui vivamus. Quis viverra nibh cras pulvinar mattis. Nec ultrices dui sapien eget mi proin sed. Pellentesque sit amet porttitor eget dolor. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat.</p>
+            <img class="in-text" src="static/imgs/rand-network.jpg">
+            <p>Velit ut tortor pretium viverra suspendisse potenti. Ipsum consequat nisl vel pretium lectus quam id leo. Fames ac turpis egestas integer eget aliquet nibh praesent tristique. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Tellus elementum sagittis vitae et leo duis. Placerat orci nulla pellentesque dignissim. Elit ut aliquam purus sit amet luctus. Sapien et ligula ullamcorper malesuada. Eu nisl nunc mi ipsum faucibus vitae aliquet. Dui ut ornare lectus sit amet est placerat in. Magna eget est lorem ipsum dolor. A diam sollicitudin tempor id eu nisl nunc mi ipsum. Sed vulputate odio ut enim blandit volutpat. Et odio pellentesque diam volutpat.</p>
+            <p>Nec ultrices dui sapien eget mi proin sed libero. Blandit massa enim nec dui nunc. Curabitur gravida arcu ac tortor dignissim convallis aenean. Leo vel orci porta non pulvinar neque laoreet. Nunc sed blandit libero volutpat sed cras ornare arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Est ultricies integer quis auctor. Convallis tellus id interdum velit laoreet. Fusce id velit ut tortor pretium viverra suspendisse. Leo integer malesuada nunc vel risus commodo. Phasellus vestibulum lorem sed risus ultricies. Blandit aliquam etiam erat velit scelerisque in dictum non consectetur. Vulputate dignissim suspendisse in est ante in nibh mauris. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Imperdiet massa tincidunt nunc pulvinar sapien. Nec ultrices dui sapien eget mi proin sed. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi.</p>    
+        </div>
+    </div>
+
+    <div class="chapter" id="3">
+        <div class="heading">
+            <h2 class="title">Carbon Economy</h2>
+            <p class="subtitle">Est for the current electricity used for bitcoin or machine learning: 12341342134.234</p>
+            <img class="graphic" src="static/imgs/carbon-economy.JPG" style="width: 20%; height: auto;">
+        </div>
+        <div class="main-section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse. Eget mi proin sed libero enim sed faucibus. Blandit aliquam etiam erat velit scelerisque. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet nulla facilisi morbi tempus iaculis urna id. Amet dictum sit amet justo donec enim diam vulputate. Volutpat sed cras ornare arcu dui vivamus. Quis viverra nibh cras pulvinar mattis. Nec ultrices dui sapien eget mi proin sed. Pellentesque sit amet porttitor eget dolor. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat.</p>
+            <p>Velit ut tortor pretium viverra suspendisse potenti. Ipsum consequat nisl vel pretium lectus quam id leo. Fames ac turpis egestas integer eget aliquet nibh praesent tristique. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Tellus elementum sagittis vitae et leo duis. Placerat orci nulla pellentesque dignissim. Elit ut aliquam purus sit amet luctus. Sapien et ligula ullamcorper malesuada. Eu nisl nunc mi ipsum faucibus vitae aliquet. Dui ut ornare lectus sit amet est placerat in. Magna eget est lorem ipsum dolor. A diam sollicitudin tempor id eu nisl nunc mi ipsum. Sed vulputate odio ut enim blandit volutpat. Et odio pellentesque diam volutpat.</p>
+            <p>Nec ultrices dui sapien eget mi proin sed libero. Blandit massa enim nec dui nunc. Curabitur gravida arcu ac tortor dignissim convallis aenean. Leo vel orci porta non pulvinar neque laoreet. Nunc sed blandit libero volutpat sed cras ornare arcu. Pellentesque eu tincidunt tortor aliquam nulla facilisi. Est ultricies integer quis auctor. Convallis tellus id interdum velit laoreet. Fusce id velit ut tortor pretium viverra suspendisse. Leo integer malesuada nunc vel risus commodo. Phasellus vestibulum lorem sed risus ultricies. Blandit aliquam etiam erat velit scelerisque in dictum non consectetur. Vulputate dignissim suspendisse in est ante in nibh mauris. Neque laoreet suspendisse interdum consectetur libero id faucibus nisl tincidunt. Imperdiet massa tincidunt nunc pulvinar sapien. Nec ultrices dui sapien eget mi proin sed. Aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant morbi.</p>    
+        </div>
+    </div>
+
+    <div class="chapter" id="4">
+        <div class="heading">
+            <h2 class="title">the cost of paying the price</h2>
+            <p class="subtitle">Est for the toatl % of money supply that is digital: 12341342134.234</p>
+            <img class="graphic" src="static/imgs/carbon-economy.JPG" style="width: 20%; height: auto;">
+        </div>
+        <div class="main-section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse. Eget mi proin sed libero enim sed faucibus. Blandit aliquam etiam erat velit scelerisque. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet nulla facilisi morbi tempus iaculis urna id. Amet dictum sit amet justo donec enim diam vulputate. Volutpat sed cras ornare arcu dui vivamus. Quis viverra nibh cras pulvinar mattis. Nec ultrices dui sapien eget mi proin sed. Pellentesque sit amet porttitor eget dolor. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat.</p>
+            <p>Velit ut tortor pretium viverra suspendisse potenti. Ipsum consequat nisl vel pretium lectus quam id leo. Fames ac turpis egestas integer eget aliquet nibh praesent tristique. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Tellus elementum sagittis vitae et leo duis. Placerat orci nulla pellentesque dignissim. Elit ut aliquam purus sit amet luctus. Sapien et ligula ullamcorper malesuada. Eu nisl nunc mi ipsum faucibus vitae aliquet. Dui ut ornare lectus sit amet est placerat in. Magna eget est lorem ipsum dolor. A diam sollicitudin tempor id eu nisl nunc mi ipsum. Sed vulputate odio ut enim blandit volutpat. Et odio pellentesque diam volutpat.</p>
+        </div>
+    </div>
+
+    <div class="chapter" id="5">
+        <div class="heading">
+            <h2 class="title">The Metabolic Rift</h2>
+            <p class="subtitle">Est for the toatl % of money supply that is digital: 12341342134.234</p>
+            <img class="graphic" src="static/imgs/metabolic-rift.jpg">
+        </div>
+        <div class="main-section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse. Eget mi proin sed libero enim sed faucibus. Blandit aliquam etiam erat velit scelerisque. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet nulla facilisi morbi tempus iaculis urna id. Amet dictum sit amet justo donec enim diam vulputate. Volutpat sed cras ornare arcu dui vivamus. Quis viverra nibh cras pulvinar mattis. Nec ultrices dui sapien eget mi proin sed. Pellentesque sit amet porttitor eget dolor. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat.</p>
+            <p>Velit ut tortor pretium viverra suspendisse potenti. Ipsum consequat nisl vel pretium lectus quam id leo. Fames ac turpis egestas integer eget aliquet nibh praesent tristique. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Tellus elementum sagittis vitae et leo duis. Placerat orci nulla pellentesque dignissim. Elit ut aliquam purus sit amet luctus. Sapien et ligula ullamcorper malesuada. Eu nisl nunc mi ipsum faucibus vitae aliquet. Dui ut ornare lectus sit amet est placerat in. Magna eget est lorem ipsum dolor. A diam sollicitudin tempor id eu nisl nunc mi ipsum. Sed vulputate odio ut enim blandit volutpat. Et odio pellentesque diam volutpat.</p>
+        </div>
+    </div>
+
+    <div class="chapter" id="6">
+        <div class="heading">
+            <h2 class="title">In Praise of Small Gestures</h2>
+            <p class="subtitle">subtitle</p>
+            <img class="graphic" src="static/imgs/metabolic-rift.jpg">
+        </div>
+        <div class="main-section">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tincidunt eget nullam non nisi est. Porta non pulvinar neque laoreet suspendisse. Eget mi proin sed libero enim sed faucibus. Blandit aliquam etiam erat velit scelerisque. Urna cursus eget nunc scelerisque viverra mauris in aliquam sem. Sit amet nulla facilisi morbi tempus iaculis urna id. Amet dictum sit amet justo donec enim diam vulputate. Volutpat sed cras ornare arcu dui vivamus. Quis viverra nibh cras pulvinar mattis. Nec ultrices dui sapien eget mi proin sed. Pellentesque sit amet porttitor eget dolor. Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque. Tincidunt tortor aliquam nulla facilisi cras fermentum odio eu feugiat.</p>
+            <p>Velit ut tortor pretium viverra suspendisse potenti. Ipsum consequat nisl vel pretium lectus quam id leo. Fames ac turpis egestas integer eget aliquet nibh praesent tristique. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Tellus elementum sagittis vitae et leo duis. Placerat orci nulla pellentesque dignissim. Elit ut aliquam purus sit amet luctus. Sapien et ligula ullamcorper malesuada. Eu nisl nunc mi ipsum faucibus vitae aliquet. Dui ut ornare lectus sit amet est placerat in. Magna eget est lorem ipsum dolor. A diam sollicitudin tempor id eu nisl nunc mi ipsum. Sed vulputate odio ut enim blandit volutpat. Et odio pellentesque diam volutpat.</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
