@@ -145,3 +145,17 @@ input[type="submit"]:hover, button:hover {
     background-color: #81a2be;
     color: #1d1f21;
 }
+
+.total-offset {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.total-offset h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}

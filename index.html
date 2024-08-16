@@ -3,36 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Server and Tree Carbon Calculator</title>
     <link rel="stylesheet" href="https://use.typekit.net/vhy8inj.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="static/styles.css">
 </head>
 <body>
+    <div class="total-offset">
+        <h2>Total Carbon Offset: <span>{{ total_carbon_offset }}</span> kg CO2</h2>
+    </div>
+
     <div class="calculator">
         <div class="display">
             <h1>Server</h1>
             <div class="calculations">
-                <div>Total Carbon Output:</div>
-            </div>
-            <div class="measurements">
-                <div>Measurement used in calculation</div>
+                <div>Current Power: <span id="current-watts">Loading...</span> W</div>
+                <div>Total Energy Used: <span id="total-kwh">Loading...</span> kWh</div>
+                <div>Total Carbon Output: <span id="carbon-output">Loading...</span> kg</div>
+                <div>Time Up: <span id="uptime">Loading...</span></div>
             </div>
         </div>
         <div class="display">
-            <h1>TREE</h1>
+            <h1>Tree</h1>
             <div class="calculations">
-                <div>CO2 Sequestered (kg):</div>
+                <div>CO2 Sequestered (kg): {{ tree_stats['CO2 Equivalent (Kg)'] }}</div>
             </div>
             <div class="measurements">
-                <div>{{tree_stats['Total Green Weight (TGW)']}} Total Green Weight (kg)</div>
-                <div>{{tree_stats['Dry Weight (DW)']}} Dry Weight: (kg)</div>
-                <div>{{tree_stats['Carbon Weight (CW)']}} Carbon Weight: (kg)</div>
-                <div>Time Alive: 2:04:23 YYYY:HH:MM</div>
+                <div>{{ tree_stats['Volume (m^3)'] }} Volume (m^3)</div>
+                <div>{{ tree_stats['Carbon Content (Kg)'] }} Carbon Content (Kg)</div>
             </div>
-            <p><i>*notes on calculation</i></p>
+            <p><i>*Notes on calculation</i></p>
         </div>
     </div>
+
     <div class="archive">
         {% for record in records %}
         <div class="archive-item">
@@ -43,5 +46,36 @@
         </div>
         {% endfor %}
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const socket = new WebSocket("ws://localhost:8000/ws/carbon-footprint");
+
+            socket.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                document.getElementById("current-watts").textContent = data.current_watts.toFixed(2);
+                document.getElementById("total-kwh").textContent = data.total_kwh.toFixed(6);
+                document.getElementById("carbon-output").textContent = data.total_co2_emissions.toFixed(6);
+
+                // Convert uptime from seconds to hh:mm:ss
+                let uptime = parseInt(data.uptime_seconds);
+                let hours = Math.floor(uptime / 3600);
+                let minutes = Math.floor((uptime % 3600) / 60);
+                let seconds = uptime % 60;
+                document.getElementById("uptime").textContent = 
+                    hours.toString().padStart(2, '0') + ':' + 
+                    minutes.toString().padStart(2, '0') + ':' + 
+                    seconds.toString().padStart(2, '0');
+            };
+
+            socket.onclose = function(event) {
+                console.log("WebSocket closed:", event);
+            };
+
+            socket.onerror = function(error) {
+                console.log("WebSocket error:", error);
+            };
+        });
+    </script>
 </body>
 </html>
