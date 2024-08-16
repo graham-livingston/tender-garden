@@ -11,7 +11,6 @@ from fastapi.staticfiles import StaticFiles
 import base64
 import sqlite3
 import jwt
-from utils import calculate_tree_weight_cm  # Assuming this is for some other calculations
 from carbonCalc import get_current_load
 
 # Global variables to store emissions data
@@ -50,7 +49,7 @@ def calculate_carbon_sequestered(diameter_cm: float, height_cm: float) -> dict:
     """
 
     # Convert diameter and height from centimeters to meters for the formula
-    diameter_m = diameter_cm / 100.0
+    diameter_m = diameter_cm
     height_m = height_cm / 100.0
 
     # Calculate D^2 * H
@@ -62,16 +61,21 @@ def calculate_carbon_sequestered(diameter_cm: float, height_cm: float) -> dict:
     # Calculate Volume
     volume = math.exp(ln_vol)
 
+    # Calculate Bio Mass (CC)
+    dry_biomass = 304 * volume
+    
     # Calculate Carbon Content (CC)
-    carbon_content = 304 * volume
 
+    carbon_content = dry_biomass * 0.47
+    
     # Calculate CO2 Equivalent (CO2-Eq)
     co2_equivalent = 3.67 * carbon_content
 
     return {
-        "Volume (m^3)": volume,
-        "Carbon Content (Kg)": carbon_content,
-        "CO2 Equivalent (Kg)": co2_equivalent
+        'Diameter (cm)': diameter_cm,
+        'Height (m)': height_m,
+        'Dry Biomass (Kg)': dry_biomass,
+        'CO2 Captured (Kg)': co2_equivalent
     }
 
 # Background task to monitor energy usage
@@ -123,7 +127,7 @@ async def index(request: Request):
         tree_stats = calculate_carbon_sequestered(diameter_cm, height_cm)
 
         # Calculate total carbon offset
-        total_carbon_offset = tree_stats["CO2 Equivalent (Kg)"] - total_co2_emissions
+        total_carbon_offset = tree_stats["CO2 Captured (Kg)"] - total_co2_emissions
 
         # Format all records for display
         for record in all_records:

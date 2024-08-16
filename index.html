@@ -10,29 +10,34 @@
 </head>
 <body>
     <div class="total-offset">
-        <h2>Total Carbon Offset: <span>{{ total_carbon_offset }}</span> kg CO2</h2>
+        <h2>Total carbon offset: <span>{{ total_carbon_offset }}</span> kg CO2</h2>
     </div>
 
     <div class="calculator">
         <div class="display">
             <h1>Server</h1>
             <div class="calculations">
-                <div>Current Power: <span id="current-watts">Loading...</span> W</div>
-                <div>Total Energy Used: <span id="total-kwh">Loading...</span> kWh</div>
-                <div>Total Carbon Output: <span id="carbon-output">Loading...</span> kg</div>
-                <div>Time Up: <span id="uptime">Loading...</span></div>
+                <div>Total CO2-eq emmissions: <span id="carbon-output">Loading...</span> kg</div>
+                <div class="measurements">
+                    <div>Current electrical usage: <span id="current-watts">Loading...</span> W</div>
+                    <div>Total electricity used: <span id="total-kwh">Loading...</span> kWh</div>
+                    <div>Time running: <span id="uptime">Loading...</span></div>
+                </div>
             </div>
+            <!-- <p><i>*Notes on calculation</i></p> -->
         </div>
         <div class="display">
             <h1>Tree</h1>
             <div class="calculations">
-                <div>CO2 Sequestered (kg): {{ tree_stats['CO2 Equivalent (Kg)'] }}</div>
+                <div>CO2 captured (kg): {{ tree_stats['CO2 Captured (Kg)'] }}</div>
             </div>
             <div class="measurements">
-                <div>{{ tree_stats['Volume (m^3)'] }} Volume (m^3)</div>
-                <div>{{ tree_stats['Carbon Content (Kg)'] }} Carbon Content (Kg)</div>
+                <div>Diameter (cm): {{ tree_stats['Diameter (cm)'] }}</div>
+                <div>Height (m): {{ tree_stats['Height (m)'] }}</div>
+                <div>Dry biomass (kg): {{ tree_stats['Dry Biomass (Kg)'] }}</div>
             </div>
-            <p><i>*Notes on calculation</i></p>
+
+            <!-- <p><i>*Notes on calculation</i></p> -->
         </div>
     </div>
 
