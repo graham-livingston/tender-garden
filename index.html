@@ -54,7 +54,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const socket = new WebSocket("ws://localhost:8000/ws/carbon-footprint");
+            const socket = new WebSocket("ws://tendergarden.io/ws/carbon-footprint");
 
             socket.onmessage = function(event) {
                 const data = JSON.parse(event.data);
