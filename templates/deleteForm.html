@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Records</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="archive">
+        {% for record in records %}
+        <div class="archive-delete" style="display:flex; flex-direction: row; align-items: center;">
+            <form id="deleteEntryForm" method="post" class="archive-item" action="/delete-record/{{ record['id'] }}" style="flex-grow: 1;">
+                <p>Date: {{ record['datetime'] }}</p>
+                <p>Height: {{ record['height'] }} cm</p>
+                <p>Width: {{ record['width'] }} cm</p>
+                <img src="data:image/jpeg;base64,{{ record['image'] }}" alt="Record Image">
+            </form>
+            <form id="deleteEntryForm" method="post" action="/delete-record/{{ record['id'] }}" style="margin-left: 10px;">
+                <button type="submit" title="Delete" style="background: none; border: none; color: red; font-size: 20px; cursor: pointer;">&times;</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

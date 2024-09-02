@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $("form").off("submit").on("submit", function(event) {
+        event.preventDefault();  // Prevent the default form submission
+
+        var formData = $(this).serialize();  // Serialize the form data
+
+        $.ajax({
+            url: "/login",
+            type: "POST",
+            data: formData,
+            success: function(data) {
+                if (data.access_token) {
+                    // Store the token in local storage
+                    localStorage.setItem("token", data.access_token);
+
+                    // Replace the login container with the form HTML from forms.html
+                    $(".login-container").html(data.form_html);
+
+                    // Resize the container to take up the entire screen
+                    $(".form-container").css({
+                        "width": "90%",
+                        "height": "90%",
+                        "margin": "auto",
+                        "display": "flex",
+                        "align-items": "stretch",
+                        "justify-content": "center",
+                        "overflow-y": "auto"
+                    });
+
+                    $(".login-container").css({
+                        "background-color": "white",
+                        "width": "90%",
+                        "height": "auto",
+                        "display": "flex",
+                        "align-items": "center",
+                        "justify-content": "center",
+                        "flex-direction": "column",
+                        "margin-top": "0"
+                    });
+
+                    // Attach the event listeners to the new form buttons
+                    attachFormButtonsListeners();
+                } else {
+                    // Display the error message
+                    $(".error-message").text(data.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log("Error: " + error);
+            }
+        });
+    });
+
+    function attachFormButtonsListeners() {
+        // Function to load forms based on button clicks
+        function loadForm(formType) {
+            const token = localStorage.getItem("token");
+
+            $.ajax({
+                url: `/form/${formType}`,
+                type: "GET",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                },
+                success: function(data) {
+                    $("#formContainer").html(data);
+                },
+                error: function(xhr, status, error) {
+                    console.log("Error: " + error);
+                }
+            });
+        }
+
+        $("#newEntry").off("click").on("click", function() {
+            loadForm("new");
+        });
+
+        $("#editEntry").off("click").on("click", function() {
+            loadForm("edit");
+        });
+
+        $("#deleteEntry").off("click").on("click", function() {
+            loadForm("delete");
+        });
+    }
+});
+
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <input type="text" id="username" name="username" placeholder="Username" required><br>
+                <input type="password" id="password" name="password" placeholder="Password" required><br>
+                <input type="submit" value="Login">
+            </form>
+            <div class="error-message" style="color: red;"></div>
+        </div>
+    </div>
+</body>
+</html>

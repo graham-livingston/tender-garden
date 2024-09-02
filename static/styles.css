@@ -7,7 +7,7 @@ body, html {
     background-color: #ebeef0;
     color: #c5c8c6;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 h1, h2, h3 {
@@ -19,6 +19,107 @@ h1, h2, h3 {
 p, label {
     color: #676767;
 }
+
+/* Popup window styling */
+.popup {
+    position: absolute;
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    max-width: 40%;
+    /* max-height: auto; */
+    overflow-y: auto;
+    color: #000; /* Ensure text is readable */
+}
+
+.hover-popup {
+    z-index: 1000;
+}
+
+.citation-popup {
+    z-index: 1010;
+}
+
+/* Import a font similar to LaTeX's Computer Modern */
+@import url('https://fonts.googleapis.com/css2?family=Latin+Modern+Roman:wght@400;700&display=swap');
+
+body, .latex-style-text {
+    font-family: 'Latin Modern Roman', 'Times New Roman', Times, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    text-align: justify;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    margin: 0;
+    padding: 0;
+}
+
+/* Additional styling to enhance LaTeX-like appearance */
+.latex-style-text h1, .latex-style-text h2, .latex-style-text h3 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.latex-style-text p {
+    margin: 1em 0;
+}
+
+.latex-style-text em {
+    font-style: italic;
+}
+
+.latex-style-text strong {
+    font-weight: bold;
+}
+
+.latex-style-text blockquote {
+    margin: 1.5em 2em;
+    padding: 0.5em 10px;
+    border-left: 5px solid #ccc;
+    /* font-style: italic; */
+    background: #f9f9f9;
+    text-align: left;
+    font-size: 0.75;
+
+}
+
+.latex-style-text ul, .latex-style-text ol {
+    margin: 1em 0;
+    padding-left: 2em;
+}
+
+.latex-style-text sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+/* Footnotes styling */
+.footnote {
+    font-size: 0.8em;
+    vertical-align: super;
+    color: #da1a1a;
+}
+
+.footnote:hover{
+    cursor: pointer;
+    color: #c37474;
+}
+
+.footnote-content {
+    font-size: 0.8em;
+    margin-top: 1em;
+}
+
+.margin{
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
 
 
 /* Inputs and Buttons */
@@ -34,9 +135,9 @@ input[type="text"], input[type="password"], input[type="number"], input[type="fi
 }
 
 input[type="submit"], button {
-    background-color: #373b41;
-    color: #c5c8c6;
-    border: 1px solid #81a2be;
+    background-color: transparent;
+    color: #81a2be;
+    border: none;
     padding: 10px 15px;
     cursor: pointer;
     font-size: 1rem;
@@ -47,6 +148,33 @@ input[type="submit"]:hover, button:hover {
     color: #1d1f21;
 }
 
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.left-column{
+margin-top: 20px;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 5.5rem);
+  width: 33.666%
+}
+
+.right-column{
+    margin-top: 20px;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: calc(100vh - 5.5rem);
+      width: 60%
+    }
+
 /* Grid Layout for Calculator Page */
 .calculator {
     display: grid;
@@ -55,16 +183,19 @@ input[type="submit"]:hover, button:hover {
     padding: 20px;
     box-sizing: border-box;
     background-color: #ebeef1;
-    border: 2px solid #373b41;
+    /* border: 2px solid #373b41; */
     color: #373b41;
 }
 
 .display {
     background-color: #f3f4f6;
-    padding: 20px;
+    padding: 1em;
+    margin-bottom: 2%;
+    width:100%;
+    height:auto;
     border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    border: 1px solid #373b41;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    /* border: 1px solid #373b41; */
     box-sizing: border-box;
 }
 
@@ -83,13 +214,69 @@ input[type="submit"]:hover, button:hover {
     text-align: right;
 }
 
+/* Graph Styling */
+/* Ensure the graph container takes the full width of the right column */
+.graph-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+/* Ensure the graph takes up 90% of the width */
+#graph {
+    width: 90%;
+    height: auto;
+    margin-top: 20px;
+}
+
+/* Ensure the legend takes up 10% of the width */
+.legend {
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.75em;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color-blue {
+    width: 20px;
+    height: 10px;
+    margin-right: 10px;
+    background-color: #1f77b4; /* Example color */
+    border-bottom: 2px solid #1f77b4; /* Line style */
+}
+
+.legend-color-green {
+    width: 20px;
+    height: 10px;
+    margin-right: 10px;
+    background-color: #1fb465; /* Example color */
+    border-bottom: 2px solid #1fb465; /* Line style */
+}
+
+li {
+    margin: 5%;
+    margin-right: 7%;
+    list-style-type: none;
+}
+
 /* Archive Section */
 .archive {
     width: 100%;
     background-color: #f6f7f9;
     padding: 20px;
     box-sizing: border-box;
-    border: 2px solid #373b41;
+    /* border: 2px solid #b7c2d1; */
 }
 
 .archive-item {
@@ -97,12 +284,12 @@ input[type="submit"]:hover, button:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #c5c8c6;
+    background-color: #f7f9f7;
     color: #282a2e;
     padding: 20px;
     border-radius: 4px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    border: 1px solid #373b41;
+    /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); */
+    border: 1px solid #dfe8f5;
     box-sizing: border-box;
     margin-bottom: 20px;
 }
@@ -122,6 +309,11 @@ input[type="submit"]:hover, button:hover {
 }
 
 /* Login Form Styling */
+.form-container{
+    display: flex;
+    justify-content: center;
+}
+
 .login-container {
     background-color: #282a2e;
     padding: 20px;
@@ -161,4 +353,72 @@ input[type="submit"]:hover, button:hover {
     margin: 0;
     font-size: 24px;
     color: #333;
+}
+/* Initial login container styling */
+.form-container {
+    width: 25%;
+    margin: 100px auto;
+    padding: 20px;
+    /* background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
+    /* border-radius: 8px; */
+}
+
+/* Adjustments for the sidebar and form layout */
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar {
+    width: 200px;
+    /* background-color: #f4f4f4; */
+    padding: 20px;
+    border-right: 1px solid #ccc;
+}
+
+.menu-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: left;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.menu-btn:hover {
+    background-color: #2980b9;
+}
+
+.form-container {
+    flex-grow: 1;
+    padding: 20px;
+    /* overflow-y: auto;    Enable vertical scrolling */
+    /* overflow-x: hidden;  Hide horizontal overflow */
+    /* height: 100vh;       Ensure it takes up the full viewport height */
+    box-sizing: border-box; /* Include padding in the height calculation */
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack the sidebar and form vertically */
+        margin: auto;
+    }
+
+    .sidebar {
+        width: 80%; /* Sidebar takes full width on mobile */
+        border-right: none; /* Remove right border */
+        border-bottom: 1px solid #ccc; /* Add bottom border */
+    }
+
+    .form-container {
+        width: 80%; /* Form container takes full width */
+
+    }
 }

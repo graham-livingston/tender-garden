@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Records</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="archive">
+        {% for record in records %}
+        <!-- <div class="archive-item"> -->
+            <div class="archive-edit" style="display:flex; flex-direction: row;">
+                <form id="editEntryForm" method="post" class="archive-item" action="/edit-record/{{ record['id'] }}">
+                    <p>Date: <input type="text" name="datetime" value="{{ record['datetime'] }}" readonly></p>
+                    <p>Height: <input type="number" name="height" value="{{ record['height'] }}" step="0.01"></p>
+                    <p>Width: <input type="number" name="width" value="{{ record['width'] }}" step="0.01"></p>
+                    <img src="data:image/jpeg;base64,{{ record['image'] }}" alt="Record Image">
+                    <p>Change Image: <input type="file" name="image"></p>
+                </form>
+                <input type="submit" value="&#10003;" title="Submit Change" style="flex:1; font-size: 1em; padding: 10px; height: 20%">
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

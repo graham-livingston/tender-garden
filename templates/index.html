@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server and Tree Carbon Calculator</title>
+    <link rel="stylesheet" href="https://use.typekit.net/vhy8inj.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+    <div class="column">
+        <div class="row">
+            <div class="left-column">
+                <!-- <div class="calculator"> -->
+                    <div class="latex-style-text">
+                        <h1>Tendergarden.io:</h1>
+                        <p>tender is the feeling that describes care (not as work, but as a
+                            relationship). The way that caring is being drawn towards the cared thing, which
+                            becomes singular in this world. Legal tender is any form of currency that must be
+                            accepted to pay a debt, such as money and carbon credits. Legal tender is that thing
+                            that we decide to relate the least to, so it can be equal to another and exchanged.</p>
+                    </div>
+
+                    <div class="display">
+                        <h1 class="hover-popup" data-tag-id="serverTXT">Server</h1>
+                        <div class="calculations">
+                            <div>CO2-eq emmissions (kg): <span id="carbon-output">Loading...</span></div>
+                            <div class="measurements">
+                                <div>Current electrical usage: <span id="current-watts">Loading...</span> W</div>
+                                <div>Total electricity used: <span id="total-kwh">Loading...</span> kWh</div>
+                                <div>Time running: <span id="uptime">Loading...</span></div>
+                            </div>
+                        </div>
+                        <!-- <p><i>*Notes on calculation</i></p> -->
+                    </div>
+                    <div class="display">
+                        <h1 class="hover-popup" data-tag-id="pt">Tree (Paulownia tomentosa)</h1>
+                        <div class="calculations hover-popup" data-tag-id="tree">
+                            <div id="co2-sequestered-value">CO2 captured (kg): {{ tree_stats['CO2 Captured (Kg)'] }}</div>
+                        </div>
+                        <div class="measurements">
+                            <div>Diameter (cm): {{ tree_stats['Diameter (cm)'] }}</div>
+                            <div>Height (m): {{ tree_stats['Height (m)'] }}</div>
+                            <div>Dry biomass (kg): {{ tree_stats['Dry Biomass (Kg)'] }}</div>
+                        </div>
+            
+                    </div>
+            </div>
+
+            <div class="right-column">
+                <div class="latex-style-text">
+                    <h2>Total CO<sub>2</sub> offset (kg): <span id="total-carbon-offset">Loading...</span></h2>
+                </div>
+                    
+                <div class="graph-container">
+                    <div id="graph"></div>
+                    
+                    <!-- Legend -->
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color-blue"></div>
+                            <span>Server: Carbon Emitted</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color-green"></div>
+                            <span>Plant: Carbon Sequestered</span>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <p style="padding-right: 4em;"><i>x-axis scale</i>:</p>
+
+                <div class="toggle-buttons">
+                    <button id="toggle-seconds" class="active">Seconds</button>
+                    <button id="toggle-exhibition-view">Since the Beginning of the Exhibition</button>
+                    <button id="toggle-ecological-view">Since the Beginning of the Tree</button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="archive">
+                {% for record in records %}
+                <div class="archive-item" data-captured-value = "{{ tree_stats['CO2 Captured (Kg)']}}" data-time = "{{ record['datetime'] }}">
+                    <p>{{ record['datetime'] }}</p>
+                    <img src="data:image/jpeg;base64,{{ record['image'] }}" alt="Record Image">
+                    <p>Height: {{ record['height'] }} cm</p>
+                    <p>Width: {{ record['width'] }} cm</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="toggle-buttons">
+        <button id="toggle-seconds" class="active">Seconds</button>
+        <button id="toggle-hours">Hours</button>
+        <button id="toggle-days">Days</button>
+        <button id="toggle-years">Years</button>
+        <button id="toggle-exhibition">Since the Beginning of the Exhibition</button>
+    </div> -->
+
+    <script src="static/script.js"></script>
+
+</body>
+</html>
