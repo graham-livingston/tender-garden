@@ -346,28 +346,15 @@ async def index(request: Request):
 @app.websocket("/ws/carbon-footprint")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-
-
     while True:
-
         uptime = datetime.now() - start_time
         uptime_seconds = uptime.total_seconds()
-
-        # total_co2_offset = total_co2_captured - total_co2_emissions
-        # print(f'total_co2_offset: {total_co2_offset}')
-        
         data = {
             "current_watts": current_power_watts,
             "total_kwh": total_energy_kwh,
             "uptime_seconds": uptime_seconds,
-            "total_co2_emissions": total_co2_emissions
+            "total_co2_emissions": total_co2_emissions,
         }
-        
-        current_power_watts = data["current_watts"]
-        total_energy_kwh = data["total_kwh"]
-        total_co2_emissions = data["total_co2_emissions"]
-        data["total_co2_offset"] = total_co2_captured - total_co2_emissions
-    
         await websocket.send_json(data)
         await asyncio.sleep(1)  # Send updates every second
 
