@@ -354,7 +354,7 @@ async def websocket_endpoint(websocket: WebSocket):
         uptime_seconds = uptime.total_seconds()
 
         # total_co2_offset = total_co2_captured - total_co2_emissions
-        print(f'total_co2_offset: {total_co2_offset}')
+        # print(f'total_co2_offset: {total_co2_offset}')
         
         data = {
             "current_watts": current_power_watts,
