@@ -24,6 +24,7 @@ total_energy_kwh = 0.0
 current_power_watts = 0.0
 total_co2_captured = 0.0
 # start_time = datetime.now()
+
 start_time = datetime.strptime('2024-08-16 15:00:00', '%Y-%m-%d %H:%M:%S')
 
 
@@ -352,7 +353,7 @@ async def websocket_endpoint(websocket: WebSocket):
         uptime = datetime.now() - start_time
         uptime_seconds = uptime.total_seconds()
 
-        total_co2_offset = total_co2_captured - total_co2_emissions
+        # total_co2_offset = total_co2_captured - total_co2_emissions
         print(f'total_co2_offset: {total_co2_offset}')
         
         data = {
@@ -365,7 +366,7 @@ async def websocket_endpoint(websocket: WebSocket):
         current_power_watts = data["current_watts"]
         total_energy_kwh = data["total_kwh"]
         total_co2_emissions = data["total_co2_emissions"]
-        data["total_co2_offset"] = total_co2_offset
+        data["total_co2_offset"] = total_co2_captured - total_co2_emissions
     
         await websocket.send_json(data)
         await asyncio.sleep(1)  # Send updates every second
